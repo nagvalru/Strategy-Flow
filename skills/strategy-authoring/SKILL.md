@@ -1,0 +1,59 @@
+---
+name: strategy-authoring
+description: "Use when implementing, porting, or repairing a TSLab trading strategy while preserving visual-editor clarity and local TSLab Web API rules."
+---
+
+# Strategy Authoring
+
+Use this phase for actual TSLab script creation or graph mutation.
+
+This skill controls strategy methodology. For concrete API calls, routes, helper usage, request-body files, lifecycle, and graph mutation rules, follow the current workspace's local TSLab instructions and skills.
+
+## Authoring Order
+
+1. Use standard TSLab blocks when they express the logic clearly.
+2. Use formula blocks for derived conditions, previous-bar references, price levels, trailing stops, risk per unit, and position sizing when the formula is simple and inspectable.
+3. Use existing project indicators only when their origin and behavior are documented.
+4. Create a new custom indicator only when the first three options are not suitable.
+
+Built-in primitives such as `Highest` / `МаксимумЗа`, `Lowest` / `МинимумЗа`, and `STDev` must be used instead of reimplementing those calculations inside a custom indicator.
+
+Do not create monster indicators that combine channel calculation, volatility, signal generation, stop logic, and risk sizing in one opaque handler. Split strategy logic into built-in blocks and formulas unless there is a specific, documented reason not to.
+
+## First Working Prototype
+
+The first implementation should establish one meaningful tradable path:
+
+- mapped source data;
+- confirmed provider, instrument, and timeframe;
+- entry logic;
+- protective or profit-taking exit;
+- position size input;
+- commission/slippage when supported;
+- required visual overlays for inspection.
+
+Do not build a complex multi-branch system before the first clean lifecycle proof.
+
+## Visual-Editor Discipline
+
+- Avoid dead blocks, detached indicators, and unused helper panes.
+- Keep the graph minimal. Every block must have a current purpose: trade path, risk sizing, exit logic, parameter/control, or intentional trader-facing visualization. Empty, non-working, disconnected, duplicate, or speculative helper blocks are blockers.
+- Remove auto-added threshold blocks, temporary constants, debug blocks, template leftovers, diagnostic entry gates, and visualization/helper blocks that are not part of the final strategy logic. These blocks can cause compilation problems and are a delivery blocker.
+- After using a template or repair route, audit the added blocks before lifecycle. If the template created semantically unclear helper blocks, unused protective flags, empty placeholders, or blocks that do not participate in the final logic, either wire/rename them intentionally or remove them.
+- Keep chart output readable.
+- Do not let diagnostic series become the main visual output.
+- Ensure plotted signals match actual trading conditions.
+- Expose meaningful parameters instead of burying important constants.
+- Add optimization ranges for indicator parameters and formula constants that define strategy behavior, unless the design explicitly marks them fixed. This includes periods, lookbacks, STDev periods/multipliers, channel lengths, trailing coefficients, thresholds, and risk constants.
+
+## Project Organization
+
+When this plugin owns local project artifacts, keep them organized:
+
+- strategy documentation and strategy-specific artifacts go under `Strategies/`;
+- custom indicator source and compiled library artifacts go under `Indicators/`;
+- custom indicators should belong to one project/library where practical, not one separate library per tiny indicator.
+
+## Completion Gate
+
+After graph mutation, remove or repair unused/empty/non-working blocks, then run the local TSLab proof sequence required by the workspace. Then use `strategy-risk` and `strategy-verification` before optimization or finalization.
