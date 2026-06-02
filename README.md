@@ -1,0 +1,1 @@
+# Trend-Team-Strategy
