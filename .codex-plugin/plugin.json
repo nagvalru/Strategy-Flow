@@ -5,10 +5,10 @@
   "author": {
     "name": "Trend Team Strategy contributors",
     "email": "replace-me@example.com",
-    "url": "https://github.com/replace-me/trend-team-strategy"
+    "url": "https://github.com/nagvalru/Trend-Team-Strategy"
   },
-  "homepage": "https://github.com/replace-me/trend-team-strategy",
-  "repository": "https://github.com/replace-me/trend-team-strategy",
+  "homepage": "https://github.com/nagvalru/Trend-Team-Strategy",
+  "repository": "https://github.com/nagvalru/Trend-Team-Strategy",
   "license": "MIT",
   "keywords": [
     "tslab",
@@ -34,9 +34,9 @@
       "Build a TSLab strategy with risk controls.",
       "Review this TSLab strategy."
     ],
-    "websiteURL": "https://github.com/replace-me/trend-team-strategy",
-    "privacyPolicyURL": "https://github.com/replace-me/trend-team-strategy",
-    "termsOfServiceURL": "https://github.com/replace-me/trend-team-strategy",
+    "websiteURL": "https://github.com/nagvalru/Trend-Team-Strategy",
+    "privacyPolicyURL": "https://github.com/nagvalru/Trend-Team-Strategy",
+    "termsOfServiceURL": "https://github.com/nagvalru/Trend-Team-Strategy",
     "brandColor": "#0F766E",
     "screenshots": []
   }
