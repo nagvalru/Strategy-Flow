@@ -1,8 +1,8 @@
-# Trend Team Strategy v0.1 Design
+# Strategy Flow v0.1 Design
 
 ## Purpose
 
-Trend Team Strategy is a standalone Codex plugin for AI-assisted TSLab strategy development. It provides methodology, phase routing, quality gates, risk discipline, and finalization rules.
+Strategy Flow is a standalone Codex plugin for AI-assisted TSLab strategy development. It provides methodology, phase routing, quality gates, risk discipline, and finalization rules.
 
 It is designed to be used from a TSLab `ai-agent` workspace that already contains Web API operation knowledge. The plugin deliberately avoids duplicating low-level TSLab API instructions.
 
@@ -29,7 +29,7 @@ Excluded:
 
 The plugin uses a router skill plus phase skills:
 
-- `trend-team-strategy`: choose the active phase.
+- `strategy-flow`: choose the active phase.
 - `strategy-research`: convert ideas into hypotheses.
 - `strategy-design`: create implementable strategy specs.
 - `strategy-authoring`: guide TSLab graph implementation discipline.

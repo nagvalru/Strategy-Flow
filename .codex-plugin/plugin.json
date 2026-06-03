@@ -1,9 +1,9 @@
 {
-  "name": "trend-team-strategy",
+  "name": "strategy-flow",
   "version": "0.1.0",
   "description": "A Codex methodology plugin for designing, implementing, verifying, and finalizing TSLab trading strategies.",
   "author": {
-    "name": "Trend Team Strategy contributors",
+    "name": "Strategy Flow contributors",
     "email": "replace-me@example.com",
     "url": "https://github.com/nagvalru/Trend-Team-Strategy"
   },
@@ -19,10 +19,10 @@
   ],
   "skills": "./skills/",
   "interface": {
-    "displayName": "Trend Team Strategy",
+    "displayName": "Strategy Flow",
     "shortDescription": "Methodology for TSLab strategy design, risk, verification, and delivery",
-    "longDescription": "Trend Team Strategy guides Codex through a disciplined workflow for TSLab trading strategies: research, design, authoring, risk management, verification, optimization, and final documentation. It is a methodology layer intended to work with an existing TSLab Web API workspace.",
-    "developerName": "Trend Team Strategy contributors",
+    "longDescription": "Strategy Flow guides Codex through a disciplined workflow for TSLab trading strategies: research, design, authoring, risk management, verification, optimization, and final documentation. It is a methodology layer intended to work with an existing TSLab Web API workspace.",
+    "developerName": "Strategy Flow contributors",
     "category": "Coding",
     "capabilities": [
       "Interactive",

@@ -1,9 +1,9 @@
 ---
-name: trend-team-strategy
+name: strategy-flow
 description: "Router for TSLab trading strategy work: use when the user asks to design, create, port, improve, verify, optimize, document, or review a TSLab trading strategy."
 ---
 
-# Trend Team Strategy Router
+# Strategy Flow Router
 
 Use this skill as the methodology router for TSLab strategy development.
 

@@ -1,12 +1,12 @@
-# Trend Team Strategy
+# Strategy Flow
 
-Trend Team Strategy is a Codex plugin that gives AI agents a disciplined methodology for creating TSLab trading strategies.
+Strategy Flow is a Codex plugin that gives AI agents a disciplined methodology for creating TSLab trading strategies.
 
 It is not a library of ready-made strategies and it does not replace the technical TSLab Web API instructions in your workspace. It is a methodology layer: it tells the agent how to think, what phases to follow, what evidence to collect, and what must be true before a strategy can be called finished.
 
 ## Scope
 
-Trend Team Strategy v0.1 focuses on:
+Strategy Flow v0.1 focuses on:
 
 - trading hypothesis research;
 - strategy design before implementation;
@@ -42,10 +42,10 @@ If you use a local marketplace file, add an entry that points to this folder and
 
 ```json
 {
-  "name": "trend-team-strategy",
+  "name": "strategy-flow",
   "source": {
     "source": "local",
-    "path": "./trend-team-strategy"
+    "path": "./strategy-flow"
   },
   "policy": {
     "installation": "AVAILABLE",
@@ -63,7 +63,7 @@ The plugin manifest is stored at:
 
 ## Skills
 
-- `trend-team-strategy`: router and phase selection.
+- `strategy-flow`: router and phase selection.
 - `strategy-research`: convert an idea into a testable trading hypothesis.
 - `strategy-design`: specify indicators, signals, entries, exits, parameters, and proof requirements.
 - `strategy-authoring`: implement strategies in TSLab with visual-editor discipline.
