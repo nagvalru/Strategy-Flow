@@ -5,10 +5,10 @@
   "author": {
     "name": "Strategy Flow contributors",
     "email": "replace-me@example.com",
-    "url": "https://github.com/nagvalru/Trend-Team-Strategy"
+    "url": "https://github.com/nagvalru/Strategy-Flow"
   },
-  "homepage": "https://github.com/nagvalru/Trend-Team-Strategy",
-  "repository": "https://github.com/nagvalru/Trend-Team-Strategy",
+  "homepage": "https://github.com/nagvalru/Strategy-Flow",
+  "repository": "https://github.com/nagvalru/Strategy-Flow",
   "license": "MIT",
   "keywords": [
     "tslab",
@@ -34,9 +34,9 @@
       "Build a TSLab strategy with risk controls.",
       "Review this TSLab strategy."
     ],
-    "websiteURL": "https://github.com/nagvalru/Trend-Team-Strategy",
-    "privacyPolicyURL": "https://github.com/nagvalru/Trend-Team-Strategy",
-    "termsOfServiceURL": "https://github.com/nagvalru/Trend-Team-Strategy",
+    "websiteURL": "https://github.com/nagvalru/Strategy-Flow",
+    "privacyPolicyURL": "https://github.com/nagvalru/Strategy-Flow",
+    "termsOfServiceURL": "https://github.com/nagvalru/Strategy-Flow",
     "brandColor": "#0F766E",
     "screenshots": []
   }
