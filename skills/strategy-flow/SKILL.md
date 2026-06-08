@@ -11,10 +11,13 @@ This plugin is a strategy methodology layer. It does not replace the current wor
 
 ## Phase Selection
 
+- New request or ambiguous starting point: use `strategy-intake`.
 - New idea or vague strategy request: use `strategy-research`.
 - Clear strategy request without a written specification: use `strategy-design`.
+- Written or accepted strategy design that now needs an execution sequence: use `strategy-plan`.
 - Create, port, or repair a TSLab script: use `strategy-authoring`, then the local TSLab script-authoring workflow.
 - Any trading strategy with position sizing, stops, protective exits, or capital allocation: use `strategy-risk`.
+- A strategy has been run and the result must be interpreted before deciding what comes next: use `strategy-run-analysis`.
 - Existing strategy review, delivery check, or "is this ready": use `strategy-verification`.
 - Optimization request: use `strategy-optimization`.
 - Final report, README, handoff, or publishable strategy description: use `strategy-finalization`.
@@ -28,18 +31,26 @@ This plugin is a strategy methodology layer. It does not replace the current wor
 - Prefer standard TSLab blocks first, formulas second, existing project indicators third, and new custom indicators last. Simple formulas are trusted implementation tools and must be preferred over creating a custom indicator for ordinary arithmetic, comparisons, stop levels, and position sizing.
 - Keep strategy logic inspectable in the visual editor whenever reasonable.
 - Preserve the distinction between a trading hypothesis, implementation mechanics, backtest results, and final claims.
+- Preserve the distinction between the starting source document and the final strategy description. New, ported, and modified strategies all require an updated final description of what the resulting strategy actually does.
 - Keep workflow continuity. After each phase, either perform the next required phase or explicitly propose the next correct phase. Do not jump from authoring to optimization while risk or verification is incomplete.
+- If the active workspace already contains project-specific strategy-development documents or templates, preserve and use those rules rather than replacing them with weaker generic summaries.
 
 ## Completion Gate
 
 Before saying the strategy is finished, all applicable phase gates must be satisfied:
 
+- intake classified the task and established the right starting document when the request did not begin with one;
 - research hypothesis is clear;
 - design describes indicators, signals, entries, exits, risk, parameters, and expected proof;
+- a concrete execution plan exists before substantial graph authoring begins;
 - TSLab graph has a meaningful trade path;
 - risk and position sizing are specified;
 - `Shares` inputs for opening position blocks are intentionally connected or the fixed-size behavior is explicitly documented as a prototype limitation;
+- run analysis classified the last real run and allowed the current next step;
 - lifecycle and metrics were verified through the local TSLab workflow;
 - graph and visualization are clean enough for a trader to inspect;
 - temporary threshold, constant, debug, and auto-visualization blocks that are not part of the strategy have been removed;
+- strategy documentation exists and reflects the implemented logic;
+- modified strategies end with a full updated final description, not only change notes;
+- any new custom indicator has its own documentation and is reflected in the indicator registry when the project uses one;
 - final documentation states assumptions, limits, and evidence.

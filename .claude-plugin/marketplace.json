@@ -1,0 +1,20 @@
+{
+  "name": "strategy-flow-dev",
+  "description": "Development marketplace for Strategy Flow",
+  "owner": {
+    "name": "Strategy Flow contributors",
+    "email": "replace-me@example.com"
+  },
+  "plugins": [
+    {
+      "name": "strategy-flow",
+      "description": "TSLab strategy workflow plugin for Claude Code: research, authoring, risk, verification, and optimization discipline",
+      "version": "0.1.0",
+      "source": "./",
+      "author": {
+        "name": "Strategy Flow contributors",
+        "email": "replace-me@example.com"
+      }
+    }
+  ]
+}

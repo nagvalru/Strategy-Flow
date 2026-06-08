@@ -5,11 +5,11 @@ description: "Use when turning a raw trading idea into a testable TSLab strategy
 
 # Strategy Research
 
-Use this phase before design when the trading idea is incomplete, ambiguous, or only described informally.
+Use this phase after `strategy-intake` when the trading idea is incomplete, ambiguous, or only described informally.
 
 ## Goal
 
-Produce a compact trading hypothesis that can later be implemented and tested in TSLab.
+Produce a compact trading hypothesis that can later be decomposed, implemented, and tested in TSLab.
 
 ## Research Checklist
 

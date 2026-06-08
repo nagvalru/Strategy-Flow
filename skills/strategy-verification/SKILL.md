@@ -5,7 +5,7 @@ description: "Use when reviewing whether a TSLab strategy is actually correct, r
 
 # Strategy Verification
 
-Use this phase before optimization, finalization, or any claim that a strategy is finished.
+Use this phase after `strategy-run-analysis` and before optimization, finalization, or any claim that a strategy is finished.
 
 ## Verification Areas
 
@@ -19,10 +19,15 @@ Check:
 - no dead, detached, empty, non-working, duplicate, auto-threshold, temporary constant, debug, template-leftover, or unused graph blocks remain;
 - every remaining block has a clear purpose in the trade path, risk path, parameter/control path, or trader-facing visualization;
 - no extra diagnostic panes obscure the trader-facing chart;
+- calculated chart lines do not spam zero-valued vertical lines because of an inappropriate chart style;
+- formula-based price levels and other sparse calculated series shown on the chart use `Line without zeroes` unless zero is intentionally meaningful;
+- constants and thresholds are plotted only on panes whose scale matches their meaning;
+- dimensionless thresholds, normalized bands, and oscillator guide levels are not leaked onto the main price pane;
 - parameters are named and exposed consistently;
 - long-only, short-only, or symmetric behavior is intentional;
 - for trend-following strategies, stop/trailing logic does not cause immediate exits unless that is explicitly intended;
 - for trailing-stop strategies, the stop moves only in the direction of the open position unless the design explicitly allows loosening;
+- if the source strategy originally had no stop-loss, any added engineering stop is explicitly documented and has a visible on/off gate such as a logical constant;
 - for trend-following strategies, stop and trailing parameters are plausible for the instrument and timeframe;
 - backtest result dates and data assumptions are clear.
 
@@ -33,8 +38,13 @@ Flag these as blockers:
 - position closes every bar without a strategy reason;
 - a trend-following strategy exits on the same bar or the next bar by construction because the stop gate or trailing distance is wrong;
 - a trailing stop for a long position moves downward, or a trailing stop for a short position moves upward, without an explicit design reason;
+- a recalculated ATR level from current close is presented as a stop-loss or trailing stop even though it is really a moving protective level that can loosen risk;
+- a source strategy with no original stop-loss silently receives a mandatory engineering stop with no visible switch to disable it;
 - stop/profit exit uses current price instead of a calculated order level;
 - signal shown on chart does not match trade execution;
+- calculated chart series are drawn with plain `Line` and produce misleading zero-line spikes instead of sparse level visualization;
+- constants or thresholds are plotted on the wrong pane or wrong scale and distort the visual range of that chart;
+- a constant already shown on its proper pane is duplicated on another pane without an explicit reason;
 - strategy trades before required warm-up data exists;
 - short logic is accidentally wired to long signals, or the reverse;
 - position size is missing, constant by accident, or disconnected from the risk model.
@@ -49,6 +59,7 @@ Report one of:
 
 - `Ready for finalization`;
 - `Ready for optimization`;
+- `Ready for run analysis`;
 - `Needs authoring repair`;
 - `Needs risk repair`;
 - `Blocked by runtime/data issue`.

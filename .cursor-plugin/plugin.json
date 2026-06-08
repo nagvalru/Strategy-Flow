@@ -1,0 +1,21 @@
+{
+  "name": "strategy-flow",
+  "displayName": "Strategy Flow",
+  "description": "TSLab strategy workflow: research, authoring, risk, verification, and optimization discipline",
+  "version": "0.1.0",
+  "author": {
+    "name": "Strategy Flow contributors",
+    "email": "replace-me@example.com"
+  },
+  "homepage": "https://github.com/nagvalru/Strategy-Flow",
+  "repository": "https://github.com/nagvalru/Strategy-Flow",
+  "license": "MIT",
+  "keywords": [
+    "tslab",
+    "trading-strategies",
+    "workflow",
+    "risk-management",
+    "skills"
+  ],
+  "skills": "./skills/"
+}

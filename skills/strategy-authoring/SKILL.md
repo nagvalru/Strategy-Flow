@@ -16,7 +16,7 @@ This skill controls strategy methodology. For concrete API calls, routes, helper
 3. Use existing project indicators only when their origin and behavior are documented.
 4. Create a new custom indicator only when the first three options are not suitable.
 
-Built-in primitives such as `Highest` / `МаксимумЗа`, `Lowest` / `МинимумЗа`, and `STDev` must be used instead of reimplementing those calculations inside a custom indicator.
+Built-in primitives such as `Highest`, `Lowest`, and `STDev` must be used instead of reimplementing those calculations inside a custom indicator.
 
 Do not create monster indicators that combine channel calculation, volatility, signal generation, stop logic, and risk sizing in one opaque handler. Split strategy logic into built-in blocks and formulas unless there is a specific, documented reason not to.
 
@@ -30,6 +30,7 @@ The first implementation should establish one meaningful tradable path:
 - protective or profit-taking exit;
 - position size input;
 - commission/slippage when supported;
+- explicit `Margin,%` review when the commission block contains that field;
 - required visual overlays for inspection.
 
 Do not build a complex multi-branch system before the first clean lifecycle proof.
@@ -41,10 +42,16 @@ Do not build a complex multi-branch system before the first clean lifecycle proo
 - Remove auto-added threshold blocks, temporary constants, debug blocks, template leftovers, diagnostic entry gates, and visualization/helper blocks that are not part of the final strategy logic. These blocks can cause compilation problems and are a delivery blocker.
 - After using a template or repair route, audit the added blocks before lifecycle. If the template created semantically unclear helper blocks, unused protective flags, empty placeholders, or blocks that do not participate in the final logic, either wire/rename them intentionally or remove them.
 - Keep chart output readable.
+- For price levels and other calculated series that can be zero or absent on many bars, prefer `Chart style = Line without zeroes`.
+- For formula outputs and other calculated lines shown on the chart, default to `Chart style = Line without zeroes` and `Line Style = Solid line` unless the design explicitly requires another style.
+- When a block is shown on the chart and its zero values do not represent meaningful trader-facing information, do not use plain `Line`; use `Line without zeroes`.
+- Do not plot constants or thresholds on a pane whose numeric scale is unrelated to that value. Dimensionless thresholds such as `0.3`, `0.7`, probabilities, normalized bands, and oscillator levels belong on the indicator pane that uses the same scale, not on the main price chart.
+- If a constant or threshold is already visualized on its correct pane, do not duplicate it on another pane unless the duplication is explicitly justified.
 - Do not let diagnostic series become the main visual output.
 - Ensure plotted signals match actual trading conditions.
 - Expose meaningful parameters instead of burying important constants.
 - Add optimization ranges for indicator parameters and formula constants that define strategy behavior, unless the design explicitly marks them fixed. This includes periods, lookbacks, STDev periods/multipliers, channel lengths, trailing coefficients, thresholds, and risk constants.
+- Do not trust default commission-block values. If the block has `Margin,%`, set it intentionally for the target market instead of leaving the default. For crypto and other non-equity markets where stock-borrow carry is not intended, set `Margin,% = 0` unless the design says otherwise.
 
 ## Project Organization
 

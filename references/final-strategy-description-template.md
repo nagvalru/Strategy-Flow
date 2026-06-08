@@ -6,6 +6,10 @@ Use this template when finalizing a TSLab strategy.
 
 Name:
 
+Task mode: New / Port / Modification / Repair
+
+Starting document: Initial / Source / Change
+
 Status: Prototype / Research Candidate / Production Candidate / Not Ready
 
 ## Market and Data

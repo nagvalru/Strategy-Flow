@@ -5,7 +5,7 @@ description: "Use when optimizing TSLab strategy parameters after a verified bas
 
 # Strategy Optimization
 
-Use this phase only after `strategy-verification` confirms a clean baseline.
+Use this phase only after `strategy-run-analysis` and `strategy-verification` confirm a clean baseline.
 
 ## Preconditions
 

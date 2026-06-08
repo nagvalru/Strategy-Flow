@@ -12,7 +12,9 @@ Included:
 
 - methodology and skills only;
 - universal support for TSLab trading strategies;
+- intake and source-document control;
 - mandatory risk phase;
+- run-analysis between implementation and optimization/finalization;
 - verification and finalization rules;
 - references for risk, visual-editor discipline, lifecycle, and anti-overfit review.
 - `Strategies/` and `Indicators/` folders for repository order.
@@ -30,10 +32,13 @@ Excluded:
 The plugin uses a router skill plus phase skills:
 
 - `strategy-flow`: choose the active phase.
+- `strategy-intake`: classify the task and create or confirm the correct starting document.
 - `strategy-research`: convert ideas into hypotheses.
 - `strategy-design`: create implementable strategy specs.
+- `strategy-plan`: convert strategy specs into an execution plan with documentation, lifecycle, and decision gates.
 - `strategy-authoring`: guide TSLab graph implementation discipline.
 - `strategy-risk`: require per-trade risk and sizing.
+- `strategy-run-analysis`: interpret a run and determine the next allowed workflow step.
 - `strategy-verification`: prove strategy correctness and readiness.
 - `strategy-optimization`: prevent premature and overfit-prone optimization.
 - `strategy-finalization`: produce final handoff documentation.
@@ -41,6 +46,17 @@ The plugin uses a router skill plus phase skills:
 ## Readiness Definition
 
 A strategy is ready only when the graph runs, the trading behavior matches the design, risk is explicit, metrics are inspected, visual-editor output is readable, and final documentation states assumptions and limits.
+
+The intended sequence is:
+
+`intake -> research/design -> plan -> authoring -> risk -> run-analysis -> verification -> optimization/finalization`
+
+The document model is:
+
+- `initial-strategy-description` for new ideas;
+- `source-strategy-description` for ports from code or another platform;
+- `change-description` for modifications of an existing strategy;
+- `final-strategy-description` as the required final current-state document for any new, ported, or modified strategy.
 
 ## Test Feedback Incorporated
 

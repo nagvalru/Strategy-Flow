@@ -5,10 +5,14 @@ description: "Use when preparing the final description, handoff, or delivery rep
 
 # Strategy Finalization
 
-Use this phase after authoring, risk, verification, and any requested optimization are complete.
+Use this phase after authoring, risk, run analysis, verification, and any requested optimization are complete.
+
+This phase must end with a full current description of the resulting strategy, not only a summary of changes.
 
 ## Final Documentation Must Include
 
+- task mode: new strategy, port, modification, repair, or review;
+- starting document used: `initial-strategy-description`, `source-strategy-description`, or `change-description`;
 - strategy name and purpose;
 - market, instrument, timeframe, and data assumptions;
 - indicators and parameters;
@@ -18,6 +22,7 @@ Use this phase after authoring, risk, verification, and any requested optimizati
 - risk and position sizing model;
 - confirmation that opening position `Shares` inputs are connected or a fixed-size prototype limitation is documented;
 - commission and slippage assumptions;
+- any nonzero `Margin,%` or borrow-carry assumption, and why it is applicable to the market;
 - optimization status and selected parameters, if any;
 - backtest period and key metrics;
 - known limitations;
@@ -32,6 +37,8 @@ Use this phase after authoring, risk, verification, and any requested optimizati
 - If risk is incomplete, say so directly and do not present the strategy as complete.
 - If optimization was not run, do not imply parameters are optimized.
 - If final cleanup left threshold/debug/temporary blocks in the graph, return to authoring or verification before delivery.
+- If the task modified an existing strategy, do not end with change notes only. Update the full final strategy description so another trader or agent can read what the strategy now does without reconstructing history.
+- Always state whether `Margin,%` was set to `0` by market rule or intentionally left nonzero as a borrow/financing assumption.
 - Always propose the next correct workflow step unless this is a final delivery answer. The next step must not skip unresolved risk, runtime, or verification blockers.
 
 ## Output Contract
