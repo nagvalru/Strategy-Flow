@@ -29,13 +29,15 @@ Produce a step-by-step execution plan that includes:
 
 1. create or locate the target script;
 2. map the source data;
-3. build the minimum meaningful trade path;
-4. add risk sizing and connect `Shares`;
-5. add initial stop and trailing/protective logic;
-6. clean the graph;
-7. run lifecycle proof;
-8. inspect metrics, messages, and logs;
-9. decide: repair, optimize, or finalize.
+3. confirm stop contract and pane map before graph authoring;
+4. build the minimum meaningful trade path;
+5. add risk sizing and connect `Shares`;
+6. add initial stop and trailing/protective logic;
+7. clean the graph;
+8. run lifecycle proof;
+9. inspect metrics, messages, and logs;
+10. run final visual and pane audit after the last mutation;
+11. decide: repair, optimize, or finalize.
 
 ## Required Documentation Checks
 
@@ -49,6 +51,7 @@ The plan must also include:
 - if a new custom indicator is created, update the indicator registry/list in the active project when that registry exists;
 - if the active project already has a strategy-description or indicator-description standard, follow that standard instead of inventing a new one;
 - preserve links between strategy documentation and indicator documentation.
+- define whether the current goal is prototype, verified baseline, delivery-clean, or live-trading-ready.
 
 ## Indicator Decision Gate
 
@@ -69,6 +72,13 @@ Each plan step should say:
 - what proof will confirm the step;
 - what blocker would force a repair loop instead of continuing.
 
+The stop-contract step must explicitly say:
+
+- source level for long and short stops;
+- whether the formula may use `Close`;
+- whether the stop is entry-anchored, dynamic protective, or monotonic trailing;
+- whether any engineering stop is optional and how it is switched on or off.
+
 ## Exit Conditions
 
 Do not allow the plan to jump directly from authoring to optimization.
@@ -78,4 +88,5 @@ The execution plan must explicitly pass through:
 - risk complete;
 - run analysis complete;
 - graph cleanup complete;
+- final visual and pane audit complete;
 - documentation complete enough for finalization.

@@ -11,6 +11,7 @@ It is designed to be used from a TSLab `ai-agent` workspace that already contain
 Included:
 
 - methodology and skills only;
+- strategy-specific brainstorming before design;
 - universal support for TSLab trading strategies;
 - intake and source-document control;
 - mandatory risk phase;
@@ -32,6 +33,7 @@ Excluded:
 The plugin uses a router skill plus phase skills:
 
 - `strategy-flow`: choose the active phase.
+- `strategy-brainstorming`: own pre-design ideation for strategy-specific semantics.
 - `strategy-intake`: classify the task and create or confirm the correct starting document.
 - `strategy-research`: convert ideas into hypotheses.
 - `strategy-design`: create implementable strategy specs.
@@ -49,7 +51,7 @@ A strategy is ready only when the graph runs, the trading behavior matches the d
 
 The intended sequence is:
 
-`intake -> research/design -> plan -> authoring -> risk -> run-analysis -> verification -> optimization/finalization`
+`strategy-brainstorming -> intake -> research/design -> plan -> authoring -> risk -> run-analysis -> verification -> optimization/finalization`
 
 The document model is:
 

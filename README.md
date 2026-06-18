@@ -8,6 +8,7 @@ It is not a library of ready-made strategies and it does not replace the technic
 
 Strategy Flow v0.1 focuses on:
 
+- strategy-specific brainstorming and intake ownership;
 - task intake and source-document setup;
 - trading hypothesis research;
 - strategy design before implementation;
@@ -106,6 +107,7 @@ Use the OpenCode plugin when you want the router skill injected automatically at
 ## Skills
 
 - `strategy-flow`: router and phase selection.
+- `strategy-brainstorming`: trading-specific ideation before design when stop semantics, pane mapping, and delivery scope are still unclear.
 - `strategy-intake`: classify the task and establish the correct starting document.
 - `strategy-research`: convert an idea into a testable trading hypothesis.
 - `strategy-design`: specify indicators, signals, entries, exits, parameters, and proof requirements.

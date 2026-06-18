@@ -11,6 +11,7 @@ This plugin is a strategy methodology layer. It does not replace the current wor
 
 ## Phase Selection
 
+- Exploratory strategy request that still needs trading-specific ideation: use `strategy-brainstorming`.
 - New request or ambiguous starting point: use `strategy-intake`.
 - New idea or vague strategy request: use `strategy-research`.
 - Clear strategy request without a written specification: use `strategy-design`.
@@ -29,6 +30,7 @@ This plugin is a strategy methodology layer. It does not replace the current wor
 - Every trading strategy must have an explicit per-trade risk design or an explicit documented reason why risk cannot be computed from available information.
 - Do not optimize before a clean baseline strategy exists and has been verified.
 - Prefer standard TSLab blocks first, formulas second, existing project indicators third, and new custom indicators last. Simple formulas are trusted implementation tools and must be preferred over creating a custom indicator for ordinary arithmetic, comparisons, stop levels, and position sizing.
+- When the user or source document specifies exact trading semantics, semantic fidelity overrides generic implementation heuristics such as "built-in blocks first".
 - Keep strategy logic inspectable in the visual editor whenever reasonable.
 - Preserve the distinction between a trading hypothesis, implementation mechanics, backtest results, and final claims.
 - Preserve the distinction between the starting source document and the final strategy description. New, ported, and modified strategies all require an updated final description of what the resulting strategy actually does.
@@ -48,6 +50,7 @@ Before saying the strategy is finished, all applicable phase gates must be satis
 - `Shares` inputs for opening position blocks are intentionally connected or the fixed-size behavior is explicitly documented as a prototype limitation;
 - run analysis classified the last real run and allowed the current next step;
 - lifecycle and metrics were verified through the local TSLab workflow;
+- final visual and pane audit passed after the last graph mutation and after any optimization/apply that changed plotted behavior;
 - graph and visualization are clean enough for a trader to inspect;
 - temporary threshold, constant, debug, and auto-visualization blocks that are not part of the strategy have been removed;
 - strategy documentation exists and reflects the implemented logic;

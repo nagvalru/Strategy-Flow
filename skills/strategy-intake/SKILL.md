@@ -9,6 +9,8 @@ Use this phase between the first user request and the first research, design, or
 
 The goal is to prevent the agent from mutating a TSLab strategy before the task type, data context, and source document are clear.
 
+If the request is still exploratory or semantically underdefined, use `strategy-brainstorming` first.
+
 ## Classify the Task
 
 Determine which mode applies:
@@ -30,6 +32,7 @@ Confirm or ask for:
 - long, short, or both;
 - strategy style when known: trend, counter-trend, breakout, mean reversion, other;
 - target result: prototype, runnable baseline, optimization-ready, or final documented strategy.
+- whether trader-facing delivery cleanliness matters for this run or only prototype behavior matters.
 
 If provider, instrument, or timeframe are missing, stop and ask.
 
@@ -67,6 +70,7 @@ Use for porting code or another platform's strategy. Capture:
 - long and short entries;
 - long and short exits;
 - risk logic already present or missing;
+- exact stop semantics already present or explicitly absent;
 - parts that map cleanly to TSLab built-ins or formulas;
 - parts that may require an existing or new indicator.
 
@@ -78,6 +82,7 @@ Use for modifying an existing strategy. Capture:
 - what behavior must change;
 - what behavior must remain untouched;
 - what new risk, stop, or parameter behavior is expected;
+- what plotted series and panes must remain trader-facing in the result;
 - what final document will need to be updated after implementation.
 
 ## Exit Rules

@@ -11,6 +11,7 @@ Use this reference when reviewing the clarity and maintainability of a TSLab vis
 - Default charted formula outputs and other sparse calculated lines to `Line without zeroes` with `Solid line`, unless the strategy explicitly needs another visual style.
 - Keep values on panes with the correct numeric meaning. Price levels belong on price-scale panes; normalized thresholds, oscillator guide levels, and dimensionless constants belong on their indicator-scale panes.
 - Do not duplicate a constant or threshold on multiple panes unless that duplication is intentionally part of the trader-facing visualization.
+- Run a final pane/plot audit after the last mutation, not only after the first successful run.
 - Remove dead, detached, or unused blocks.
 - Name parameters and key blocks clearly.
 - Avoid many duplicate hidden constants when one exposed parameter would be clearer.

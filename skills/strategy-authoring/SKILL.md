@@ -39,6 +39,7 @@ Do not build a complex multi-branch system before the first clean lifecycle proo
 
 - Avoid dead blocks, detached indicators, and unused helper panes.
 - Keep the graph minimal. Every block must have a current purpose: trade path, risk sizing, exit logic, parameter/control, or intentional trader-facing visualization. Empty, non-working, disconnected, duplicate, or speculative helper blocks are blockers.
+- Before completion, be able to classify every block explicitly as trade path, risk path, parameter, trader-facing visualization, or justified helper still required for runtime behavior. If a block cannot be classified, remove or rewrite it.
 - Remove auto-added threshold blocks, temporary constants, debug blocks, template leftovers, diagnostic entry gates, and visualization/helper blocks that are not part of the final strategy logic. These blocks can cause compilation problems and are a delivery blocker.
 - After using a template or repair route, audit the added blocks before lifecycle. If the template created semantically unclear helper blocks, unused protective flags, empty placeholders, or blocks that do not participate in the final logic, either wire/rename them intentionally or remove them.
 - Keep chart output readable.

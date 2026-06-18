@@ -75,6 +75,7 @@ Use `Ready for optimization` only when:
 - metrics are usable;
 - risk is connected;
 - indicator and strategy parameters are optimization-ready;
+- there is no unresolved visual/pane blocker from plotted series changed by the latest mutation;
 - nothing still requires authoring or risk repair.
 
 Use `Ready for finalization` only when:

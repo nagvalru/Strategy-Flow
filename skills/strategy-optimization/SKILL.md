@@ -20,6 +20,7 @@ Do not optimize until:
 - optimization parameters are meaningful and not accidental literals;
 - all strategy-driving indicator parameters have optimization ranges or an explicit fixed-parameter justification;
 - the objective is stated before running the optimization.
+- optimization result selection includes a trading-sanity filter, not only raw metric rank.
 
 ## Optimization Design
 
@@ -41,8 +42,10 @@ Specify:
 - Prefer broad, interpretable ranges over narrow curve-fit ranges.
 - Preserve the baseline result.
 - Treat "best net profit" alone as weak evidence.
+- Do not apply a best optimization row with zero trades, no meaningful fills, or other obvious trading-sanity failures even if the ranking metric puts it first.
+- For metrics such as `RecoveryFactor`, reject no-trade rows and choose the best row that still satisfies trading sanity conditions.
 - Watch for too few trades, unstable neighboring parameter values, and extreme parameter choices.
 
 ## Output Contract
 
-Return selected parameters, included indicator parameters, excluded fixed parameters with reasons, objective, constraints, best result, comparison to baseline, and remaining overfit risk. Then use `strategy-finalization` only if the result is defensible.
+Return selected parameters, included indicator parameters, excluded fixed parameters with reasons, objective, constraints, best result, trading-sanity checks on the selected row, comparison to baseline, and remaining overfit risk. Then use `strategy-finalization` only if the result is defensible.
