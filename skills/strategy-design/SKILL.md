@@ -25,6 +25,7 @@ Create or confirm:
 - short entry rules, or explicit long-only reason;
 - long exit rules;
 - short exit rules, or explicit reason if absent;
+- direct-versus-conditional execution semantics for each entry and exit: pure price level, `Close` confirmation, `High/Low` touch, previous-bar confirmation, or another explicit rule;
 - protective stop or invalidation logic;
 - profit-taking or trailing logic when applicable;
 - if the source strategy had no stop-loss, whether any optional engineering stop is being added for baseline safety and how it can be disabled;
@@ -35,6 +36,7 @@ Create or confirm:
 - parameters that should be exposed for later optimization;
 - every indicator parameter, formula constant, risk constant, and entry/exit threshold that should be optimization-ready;
 - visual outputs needed for trader inspection;
+- visible plotted trigger/reference levels that should appear on the chart because they are part of the trading decision;
 - pane map for each visible series: price pane, separate pane, or hidden;
 - proof plan: lifecycle, metrics, chart checks, and intent checks.
 
@@ -50,6 +52,8 @@ Create or confirm:
 - Indicator parameters must be optimization-ready by default. If an indicator period, multiplier, threshold, deviation, lookback, smoothing, or similar value is intentionally fixed, document why it should not be optimized.
 - If the source strategy has no stop-loss, do not silently invent one and present it as native strategy logic. Any added engineering/protective stop must be declared explicitly in the design and must specify whether it is optional and how it is enabled or disabled.
 - If the user specified the stop source and update rule exactly, the implementation must match that contract before lifecycle is treated as meaningful proof.
+- If an entry or exit block already expresses the intended direct price semantics, do not add a duplicate logical formula that restates the same threshold test.
+- If the user explicitly asked for bar-condition semantics such as "exit only when Close is below the stop level" or "enter only when Close is above the band", that extra logical condition is valid and should be modeled explicitly.
 - Do not leave `Margin,% = 10` by default just because the platform prefilled it. For non-equity markets where stock-borrow carry is not the intended model, set `Margin,%` to `0` unless the user explicitly wants another financing-cost assumption. For crypto, default `Margin,%` to `0`.
 - Keep the first implementation to the smallest tradable version that can test the hypothesis.
 - Treat missing risk as a blocker for trading strategies.

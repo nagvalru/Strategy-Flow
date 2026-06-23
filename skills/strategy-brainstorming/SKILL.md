@@ -22,6 +22,7 @@ Clarify or record:
 - whether stops exist in the source idea at all;
 - if stops exist, what the exact stop source and update rule are;
 - whether stop logic may use `Close`, current bar values, previous bar values, or only entry-anchored logic;
+- whether entry and exit semantics are direct price-level semantics or bar-condition semantics such as `Close > level`, `Close < level`, `High > level`, or `Low < level`;
 - whether stop logic may loosen risk;
 - whether auxiliary indicators are allowed in stop logic;
 - which series must be visible to the trader;
@@ -31,6 +32,7 @@ Clarify or record:
 ## Hard Rules
 
 - If the user specified exact stop semantics, preserve them. Do not let "built-in blocks first" override the stop contract.
+- If the user specified direct price-trigger semantics, do not wrap them in a redundant boolean formula. If the user specified bar-condition semantics such as `Close > level` or `Close < level`, preserve that explicitly instead of silently converting it to a pure price-trigger block.
 - If the user did not ask for a stop-loss, do not silently introduce one as core strategy logic.
 - If an engineering stop is proposed for baseline safety, present it as optional and explicitly switchable.
 - If a series is price-scale, plan to keep it on the main price pane unless there is a strong explicit reason not to.

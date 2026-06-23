@@ -27,6 +27,7 @@ Check:
 - whether trades actually occur;
 - whether entries match the written strategy rules;
 - whether exits match the written strategy rules;
+- whether native entry/exit block semantics were used cleanly or were wrapped in redundant logical conditions;
 - whether warm-up behavior is sane;
 - whether stop and trailing logic behave as intended;
 - whether `Shares` and risk sizing affect actual openings;

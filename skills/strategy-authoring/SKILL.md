@@ -20,6 +20,18 @@ Built-in primitives such as `Highest`, `Lowest`, and `STDev` must be used instea
 
 Do not create monster indicators that combine channel calculation, volatility, signal generation, stop logic, and risk sizing in one opaque handler. Split strategy logic into built-in blocks and formulas unless there is a specific, documented reason not to.
 
+## Entry And Exit Semantics
+
+- If a TSLab entry or exit block already captures the intended direct price-trigger behavior, wire the relevant price level into that block and stop there.
+- Do not add a boolean formula that merely restates the same direct threshold logic. That creates redundant semantics and often leaves dead blocks after later repairs.
+- Add a separate boolean condition only when the strategy explicitly requires bar-condition semantics beyond the native block behavior, for example:
+  - `Close > level`
+  - `Close < level`
+  - `High > level` with separate confirmation logic
+  - `Low < level` with separate confirmation logic
+  - an additional enable/disable gate that is truly part of the trading rule
+- For `ClosePositionByStopItem` or equivalent stop-close blocks, do not add a separate logical gate unless the strategy explicitly requires an extra exit-enable condition beyond position plus stop price.
+
 ## First Working Prototype
 
 The first implementation should establish one meaningful tradable path:
@@ -50,7 +62,9 @@ Do not build a complex multi-branch system before the first clean lifecycle proo
 - If a constant or threshold is already visualized on its correct pane, do not duplicate it on another pane unless the duplication is explicitly justified.
 - Do not let diagnostic series become the main visual output.
 - Ensure plotted signals match actual trading conditions.
+- Plot the trader-relevant trigger or reference level when that level is part of the execution rule and useful for inspection. Do not substitute an easier generic overlay if it hides the actual trigger line.
 - Expose meaningful parameters instead of burying important constants.
+- If two parameters are logically one trading knob, do not expose them as two independent optimization knobs unless the design explicitly calls for independent control.
 - Add optimization ranges for indicator parameters and formula constants that define strategy behavior, unless the design explicitly marks them fixed. This includes periods, lookbacks, STDev periods/multipliers, channel lengths, trailing coefficients, thresholds, and risk constants.
 - Do not trust default commission-block values. If the block has `Margin,%`, set it intentionally for the target market instead of leaving the default. For crypto and other non-equity markets where stock-borrow carry is not intended, set `Margin,% = 0` unless the design says otherwise.
 
