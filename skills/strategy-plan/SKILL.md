@@ -39,6 +39,13 @@ Produce a step-by-step execution plan that includes:
 10. run final visual and pane audit after the last mutation;
 11. decide: repair, optimize, or finalize.
 
+Every substantial mutation inside the plan must include a mini-loop:
+
+- mutate;
+- cleanup audit;
+- lifecycle proof;
+- decide whether the mutation is accepted or must be repaired immediately.
+
 ## Required Documentation Checks
 
 The plan must also include:
@@ -78,6 +85,12 @@ The stop-contract step must explicitly say:
 - whether the formula may use `Close`;
 - whether the stop is entry-anchored, dynamic protective, or monotonic trailing;
 - whether any engineering stop is optional and how it is switched on or off.
+
+The risk step must explicitly say:
+
+- what capital base is used if risk is percent-based;
+- whether that capital base comes from initial deposit, a constant, or another explicit source;
+- whether risk parameters must be optimization-ready.
 
 ## Exit Conditions
 

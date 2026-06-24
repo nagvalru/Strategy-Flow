@@ -24,6 +24,7 @@ Do not create monster indicators that combine channel calculation, volatility, s
 
 - If a TSLab entry or exit block already captures the intended direct price-trigger behavior, wire the relevant price level into that block and stop there.
 - Do not add a boolean formula that merely restates the same direct threshold logic. That creates redundant semantics and often leaves dead blocks after later repairs.
+- Do not add `AlwaysTrue` wrappers such as `Close >= Close`, `Price <= Price`, `PositionSize > 0`, or other conditions already implied by the native block behavior.
 - Add a separate boolean condition only when the strategy explicitly requires bar-condition semantics beyond the native block behavior, for example:
   - `Close > level`
   - `Close < level`
@@ -54,6 +55,7 @@ Do not build a complex multi-branch system before the first clean lifecycle proo
 - Before completion, be able to classify every block explicitly as trade path, risk path, parameter, trader-facing visualization, or justified helper still required for runtime behavior. If a block cannot be classified, remove or rewrite it.
 - Remove auto-added threshold blocks, temporary constants, debug blocks, template leftovers, diagnostic entry gates, and visualization/helper blocks that are not part of the final strategy logic. These blocks can cause compilation problems and are a delivery blocker.
 - After using a template or repair route, audit the added blocks before lifecycle. If the template created semantically unclear helper blocks, unused protective flags, empty placeholders, or blocks that do not participate in the final logic, either wire/rename them intentionally or remove them.
+- After any substantial mutation, run a cleanup audit immediately. Do not postpone cleanup until the end if the mutation changed entry, exit, risk, panes, plotted series, or optimization mappings.
 - Keep chart output readable.
 - For price levels and other calculated series that can be zero or absent on many bars, prefer `Chart style = Line without zeroes`.
 - For formula outputs and other calculated lines shown on the chart, default to `Chart style = Line without zeroes` and `Line Style = Solid line` unless the design explicitly requires another style.
@@ -66,6 +68,7 @@ Do not build a complex multi-branch system before the first clean lifecycle proo
 - Expose meaningful parameters instead of burying important constants.
 - If two parameters are logically one trading knob, do not expose them as two independent optimization knobs unless the design explicitly calls for independent control.
 - Add optimization ranges for indicator parameters and formula constants that define strategy behavior, unless the design explicitly marks them fixed. This includes periods, lookbacks, STDev periods/multipliers, channel lengths, trailing coefficients, thresholds, and risk constants.
+- If a newly introduced risk parameter affects strategy behavior, either expose it to optimization or explicitly document why it is fixed.
 - Do not trust default commission-block values. If the block has `Margin,%`, set it intentionally for the target market instead of leaving the default. For crypto and other non-equity markets where stock-borrow carry is not intended, set `Margin,% = 0` unless the design says otherwise.
 
 ## Project Organization
@@ -78,4 +81,4 @@ When this plugin owns local project artifacts, keep them organized:
 
 ## Completion Gate
 
-After graph mutation, remove or repair unused/empty/non-working blocks, then run the local TSLab proof sequence required by the workspace. Then use `strategy-risk` and `strategy-verification` before optimization or finalization.
+After graph mutation, remove or repair unused/empty/non-working blocks, check for stray links and panes, then run the local TSLab proof sequence required by the workspace. Then use `strategy-risk` and `strategy-verification` before optimization or finalization.

@@ -19,6 +19,7 @@ Strategy Flow v0.1 focuses on:
 - verification of graph quality, signals, trades, and metrics;
 - optimization only after a working baseline exists;
 - final documentation and delivery checks;
+- post-mutation cleanup and verification loops;
 - repository organization for `Strategies/` and `Indicators/`.
 
 It intentionally does not include example strategy implementations in v0.1.

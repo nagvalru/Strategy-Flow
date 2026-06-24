@@ -33,10 +33,13 @@ Confirm or ask for:
 - strategy style when known: trend, counter-trend, breakout, mean reversion, other;
 - target result: prototype, runnable baseline, optimization-ready, or final documented strategy.
 - whether trader-facing delivery cleanliness matters for this run or only prototype behavior matters.
+- whether the risk model is already known or still undecided.
 
 If provider, instrument, or timeframe are missing, stop and ask.
 
 If the user explicitly delegates the choice, select from active providers first and state the chosen provider, instrument, and timeframe before moving on.
+
+If the risk model is still undecided, do not silently treat it as settled. Record that it remains open or state the default assumption chosen for the current iteration.
 
 ## Required Source Document
 

@@ -17,6 +17,7 @@ Check:
 - entries and exits match the written strategy rules;
 - implemented stop logic matches the declared stop contract, including source series, current-vs-previous-bar rule, allowed use of `Close`, and monotonicity expectations;
 - entry and exit blocks are semantically aligned with the declared rule: direct price-trigger blocks for direct price semantics, explicit logical conditions only when the strategy really requires bar-condition confirmation or an additional gate;
+- no `AlwaysTrue` or semantically built-in gates were added on top of native entry/exit/stop blocks;
 - risk sizing and protective exits match the risk contract;
 - no dead, detached, empty, non-working, duplicate, auto-threshold, temporary constant, debug, template-leftover, or unused graph blocks remain;
 - every remaining block has a clear purpose in the trade path, risk path, parameter/control path, or trader-facing visualization;
@@ -48,6 +49,7 @@ Flag these as blockers:
 - stop/profit exit uses current price instead of a calculated order level;
 - signal shown on chart does not match trade execution;
 - a boolean entry or exit formula merely restates a direct threshold already expressed by the native block and serves no independent trading purpose;
+- an `AlwaysTrue` gate such as `Close >= Close` or `PositionSize > 0` was added even though the native block behavior already implies it;
 - the chart omits the actual trigger/reference level even though that level is central to trader inspection of the strategy;
 - calculated chart series are drawn with plain `Line` and produce misleading zero-line spikes instead of sparse level visualization;
 - constants or thresholds are plotted on the wrong pane or wrong scale and distort the visual range of that chart;
@@ -62,6 +64,8 @@ Flag these as blockers:
 - a newly created helper block is not connected to the final logic and was only useful during diagnosis;
 - lifecycle stops at build/load without a successful run that has bars and useful metrics, unless the exact runtime/data blocker is reported.
 - two optimization parameters are exposed separately even though they are one logical trading knob and the design did not ask for independent control.
+- a risk parameter affecting strategy behavior was added but not mapped for optimization and not declared intentionally fixed;
+- a percent-risk model was added without an explicit deposit or other capital base.
 
 ## Output Contract
 

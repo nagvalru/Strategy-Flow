@@ -28,6 +28,7 @@ Check:
 - whether entries match the written strategy rules;
 - whether exits match the written strategy rules;
 - whether native entry/exit block semantics were used cleanly or were wrapped in redundant logical conditions;
+- whether the latest mutation introduced any `AlwaysTrue` gate or redundant position/existence gate;
 - whether warm-up behavior is sane;
 - whether stop and trailing logic behave as intended;
 - whether `Shares` and risk sizing affect actual openings;
@@ -51,6 +52,7 @@ Return exactly one main result:
 Use `Needs authoring repair` when:
 
 - entries or exits do not match the described logic;
+- the mutation introduced redundant or `AlwaysTrue` gating;
 - trades never happen because the graph logic is wrong;
 - the graph runs but produces nonsensical trade behavior;
 - chart logic and trade logic diverge.
@@ -59,6 +61,7 @@ Use `Needs risk repair` when:
 
 - stop logic is not a real risk contract;
 - `Shares` is missing, accidental, or disconnected;
+- capital base for percent risk is missing or incoherent;
 - trailing logic widens risk after entry without explicit design approval;
 - trend strategy stop settings cause obviously premature exits.
 
